@@ -26,22 +26,10 @@ wird mit kleineren Dichtelagen verhindert. Außerdem reduziert sich so die
 Gesamtgröße des Netzes, was sich signifikant in der Rechenzeit niederschlägt.
 Daher sind hier fünf Dichtelagen mit den angegeben Größen implementiert.
 Die Anzahl der Dichtelagen wurde dabei lediglich händisch variiert und das
-beste Ergebnis gewählt.\\
-
-% Datensätze:
-% ------------------------------------
-%      train 	 val 	 shape
-% Data:	 57598 	 24686 	 (57598, 400, 400)
-% Labels: 	 57598 	 24686 	 (57598,)
+beste Ergebnis gewählt.
 %
-%
-%      Y 		 X
-% ---------------------------------------------------------------
-% train|	 (57598, 4) 	 (57598, 400, 400, 1)
-% test |	 (24686, 4) 	 (24686, 400, 400, 1)
-
 \begin{table}[htb]
-  \centering
+  \centering%
   \begin{tabular}{l
                   l
                   l}
@@ -67,7 +55,7 @@ beste Ergebnis gewählt.\\
   \label{tab:haupt}
   \caption{Einzelne Lagen, sowie die jeweiligen Dimensionen des Outputs für für Hauptarchitektur des CNN.}
 \end{table}
-
+%
 Eine automatisierte Suche nach der besten Architektur in Form einer
 \textit{grid search} ist für dieses Netz mit den dafür zur Verfügung stehenden
 Mitteln in endlicher Zeit nicht umzusetzen. Der Hohe Bedarf an Arbeitsspeicher
@@ -96,7 +84,7 @@ Abbildung~\ref{fig:count} dargestellt.
 %
 \begin{figure}
   \centering
-  \includegraphics[width=0.7\textwidth]{Plots/countplot_smaller.pdf}
+  \includegraphics[width=0.5\textwidth]{Plots/countplot_smaller.pdf}
   \caption{Verteilung der Bilder auf die einzelnen Klassen im Datensatz.}
   \label{fig:count}
 \end{figure}
@@ -107,7 +95,7 @@ dafür die kleineren Klassen zu vernachlässigen. Außerdem wird so die
 Genauigkeit verzerrt, da auch der Validierungsdatensatz diese Verteilung
 widerspiegelt. Um dieser Problematik zu begegnen werden dem Netz zum Training
 auch noch Gewichte für die einzelnen Bilder übergeben. Diese sind einheitlich
-für jede Klasse und gleichen genau diese Unterschiede aus. \\
+für jede Klasse und gleichen genau diese Unterschiede aus.
 In Abbildung~\ref{fig:eq_all} sind zum Vergleich die \textit{confusion matrix}
 für ein gewichtetes Training, sowie für ein ungewichtetes Training dargestellt.
 Die \textit{performance plots} sind allesamt auf einem Validierungsdatensatz
@@ -115,9 +103,9 @@ von insgesamt $24\,686$ Bildern entstanden, welcher dieselbe Verteilung auf
 die einzelnen Klassen aufweist, wie der Trainingsdatensatz.
 %
 \begin{figure}[h!]
-  \subcaptionbox{Die \textit{confusion matrix} für das gewichtete Training.}{\includegraphics[width=0.48\textwidth]{Plots/confusion_matrix_smaller.pdf}}
+  \subcaptionbox{Die \textit{confusion matrix} für das gewichtete Training.}{\includegraphics[width=0.5\textwidth]{Plots/confusion_matrix_smaller.pdf}}
   \hspace{8pt}
-  \subcaptionbox{Die \textit{confusion matrix} für das ungewichtete Training.}{\includegraphics[width=0.48\textwidth]{Plots/confusion_matrix_equal.pdf}}
+  \subcaptionbox{Die \textit{confusion matrix} für das ungewichtete Training.}{\includegraphics[width=0.5\textwidth]{Plots/confusion_matrix_equal.pdf}}
   \label{fig:eq_all}
 \end{figure}
 %

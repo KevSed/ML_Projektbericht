@@ -13,15 +13,38 @@ Modell generieren, welches 4 Klassen mit einer Genauigkeit von
 $\SI{90}{\percent}$ unterscheiden kann. Durch die Architektur können so Bilder
 verschiedener Größen und Datensätze unterschiedlicher Verteilungen zur
 Vorhersage verwendet werden. Durch ausreichende Regularisierung treten keine
-Effekte von \textit{overtraining} auf, wie in Abbildung~\ref{fig:hist}
-
-
-Allerdings lässt sich auch mit deutlich einfacheren Modellen
-\begin{figure}
-  \subcaptionbox{\textit{accuracy history}}{\centering\includegraphics[width=0.48\linewidth]{Plots/accuracy_history_smaller.pdf}}
-  \subcaptionbox{\textit{loss history}}{\centering\includegraphics[width=0.48\linewidth]{Plots/loss_history_smaller.pdf}}
-  \subcaptionbox{}{\centering\includegraphics[width=0.48\linewidth]{Plots/confusion_matrix_smaller.pdf}}
-  \subcaptionbox{}{\centering\includegraphics[width=0.5\linewidth]{Plots/NORMAL_or_not_log_smaller.pdf}}
-  \caption{Die \textit{accuracy history}, sowie die \textit{loss history} der Hauptarchitektur des CNN. Es zeigen sich hier nach 40 Epochen keine Anzeichen für ein \textit{overtraining}.}
+Effekte von \textit{overtraining} auf, wie in Abbildung~\ref{fig:hist} zu sehen
+ist.
+%
+\begin{figure}[h!]
+  \subcaptionbox{\textit{accuracy history}}{\centering\includegraphics[width=0.5\linewidth]{Plots/accuracy_history_smaller.pdf}}
+  \subcaptionbox{\textit{loss history}}{\centering\includegraphics[width=0.5\linewidth]{Plots/loss_history_smaller.pdf}}
+  \caption{Die \textit{accuracy history} (a), sowie die \textit{loss history} (b) der Hauptarchitektur des CNN. Es zeigen sich hier nach 40 Epochen keine Anzeichen für ein \textit{overtraining}.}
   \label{fig:hist}
 \end{figure}
+%
+Betrachtet man Beispiele für die Klassen CNV, DRUSEN und NORMAL, deren
+Trennung für das Netz am schwierigsten ist, so fällt auf, dass es sich hierbei
+um Bilder handelt, die auch für Menschen schwierig zu trennen sind. Das Netz
+erreicht allerdings mit der oben beschriebenen Genauigkeit eine Präzesion, die
+weit über der eines ungelernten Auges reicht. Ärzte hingegen erreichen
+Genauigkeiten, die noch über dem hier erreichten Wert liegen.\\
+Eine Genauigkeit von $\SI{90}{\percent}$ durch Bilderkennung auf 4 Klassen zu
+erreichen, stellt allerdings eine sehr optimistisch stimmende Leistung dar.
+Besonders in der Medizin können solche Anwendungen auch eine äußerst praktische
+Anwendung finden.\\
+
+%
+\begin{figure}[h!]
+  \subcaptionbox{\textit{confusion matrix}}{\centering\includegraphics[width=0.4\linewidth]{Plots/confusion_matrix_smaller.pdf}}
+  \subcaptionbox{Verteilung des Outputs des Netzes für ein Validierungssample.}{\centering\includegraphics[width=0.55\linewidth]{Plots/NORMAL_or_not_log_smaller.pdf}}
+  \caption{Die \textit{confusion matrix} (a), sowie der Output (b) der Hauptarchitektur des CNN. Die \textit{confusion matrix} zeigt sehr hohe Genauigkeiten für die einzelnen Klassen. Der Output des Netzes zeigt ebenfalls eine gute Trennung der Krankheiten vom gesunden Auge.}
+  \label{fig:erg}
+\end{figure}
+%
+Allerdings zeigt diese Arbeit auch, dass sich mit deutlich einfacheren
+Architekturen funktionierende Modelle entwickeln lassen. Insbesondere zeigt
+sich trotz starker Skalierung des Datensatzes, was eine deutliche Steigerung
+der \textit{computing performance} zur Folge hat, eine Lösung mit einem
+einfachen \textit{fully connected} Netz. Dabei sind Genauigkeiten von etwa
+$\SI{73}{\percent}$ möglich.
