@@ -1,6 +1,8 @@
-\chapter{Architektur und Optimierung des Convolutional Neural Network}
-
-Die Netzarchitektur, die sich im Laufe dieser Arbeit als die effektivste
+{\let\clearpage\relax \renewcommand{\baselinestretch}{1.0}\chapter{
+Architektur und Optimierung des Convolutional Neural Network}%
+\renewcommand{\baselinestretch}{1.5}}%
+%
+Die Netzarchitektur, die sich im Laufe dieser Arbeit als die Effektivste
 herausgestellt hat (i.F. Hauptarchitektur), ist in Tabelle~\ref{tab:haupt} dargestellt. Es hat
 sich im Laufe der Bearbeitung zunächst herausgestellt, dass die Kombination
 aus \texttt{Conv2D} Lage und \texttt{MaxPooling} Lage eine gut
@@ -28,6 +30,7 @@ Daher sind hier fünf Dichtelagen mit den angegeben Größen implementiert.
 Die Anzahl der Dichtelagen wurde dabei lediglich händisch variiert und das
 beste Ergebnis gewählt.
 %
+\renewcommand{\baselinestretch}{1.0}
 \begin{table}[htb]
   \centering%
   \begin{tabular}{l
@@ -55,10 +58,11 @@ beste Ergebnis gewählt.
   \caption{Einzelne Lagen, sowie die jeweiligen Dimensionen des Outputs für für Hauptarchitektur des CNN.}
   \label{tab:haupt}
 \end{table}
+\renewcommand{\baselinestretch}{1.5}
 %
 Eine automatisierte Suche nach der besten Architektur in Form einer
 Optimierungsstudie ist für dieses Netz mit den dafür zur Verfügung stehenden
-Mitteln in endlicher Zeit nicht umzusetzen. Der Hohe Bedarf an Arbeitsspeicher
+Mitteln in endlicher Zeit nicht umzusetzen. Der hohe Bedarf an Arbeitsspeicher
 und CPU-Leistung steht leider nicht zur Verfügung. Allerdings zeigte sich durch
 etwa ein Dutzend Iterationen, dass das hier vorliegende Netz gute Leistungen
 erbringt. Zwischen dem CNN und dem vollständig vernetzten Netz sowie vor
@@ -76,29 +80,40 @@ Die \textbf{elu} Funktionen zeigten für verschiedene Architekturen die beste
 Leistung. Im Vergleich z.B. zur \textit{rectified linear unit} (\textbf{relu}) Funktion zeigte sich allerdings
 lediglich ein leichter Vorteil der \textbf{elu} Funktion.\\
 Das Modell wurde 40 Epochen lang mit einer \textit{batch size} von 100 Bildern
-trainiert. Das bedeutet, das immer 100 Bilder gleichzeitig durch das Netz
+trainiert. Das bedeutet, dass immer 100 Bilder gleichzeitig durch das Netz
 propagieren. Dies wird innerhalb einer Epoche wiederholt, bis alle Bilder
-verwendet wurden. Als Metrik für die Quantifisierung der Verbesserung des
+verwendet wurden. Als Metrik für die Quantifizierung der Verbesserung des
 Netzes wurde die Genauigkeit verwendet und als Verlustfunktion die
 kategorische Kreuzentropie. Der Optimierer, der sich hier als am besten zeigte
 ist der Adam Optimierer.
 
 \section{Training}
 %
-Das Netz wurde so auf $\SI{70}{\percent}$ des Datensatzes, also insgesamt
+Das Netz wurde auf $\SI{70}{\percent}$ des Datensatzes, also insgesamt
 $57\,598$ Bildern trainiert und auf \SI{30}{\percent} validiert. Dabei ist die
 Verteilung der Bilder auf die einzelnen Klassen jedoch nicht homogen, wie in
-Abbildung~\ref{fig:count} dargestellt.
+Tabelle~\ref{tab:count} dargestellt.
 %
-\begin{figure}
-  \centering
-  \includegraphics[width=0.5\textwidth]{Plots/countplot_smaller.pdf}
-  \caption{Verteilung der Bilder auf die einzelnen Klassen im Datensatz.}
-  \label{fig:count}
-\end{figure}
+\renewcommand{\baselinestretch}{1.0}
+\begin{table}[htb]
+  \centering%
+  \begin{tabular}{l
+                  l
+                  l
+                  l}
+      \toprule
+      NORMAL    & CNV    & DME & DRUSEN \\
+      \midrule
+      26315     & 37205  & 11348 & 8616 \\
+      \bottomrule
+  \end{tabular}
+  \caption{Verteilung der Bilder auf die einzelnen Klassen.}
+  \label{tab:count}
+\end{table}
+\renewcommand{\baselinestretch}{1.5}
 %
 Eine solch ungleiche Verteilung hat vermutlich zur Folge, dass das Netz sehr
-stark darauf konditioniert wird die Klaasse mit vielen Bildern zu erkennen und
+stark darauf konditioniert wird die Klasse mit vielen Bildern zu erkennen und
 dafür die kleineren Klassen zu vernachlässigen. Außerdem wird so die
 Genauigkeit verzerrt, da auch der Validierungsdatensatz diese Verteilung
 widerspiegelt. Um dieser Problematik zu begegnen werden dem Netz zum Training
@@ -114,7 +129,9 @@ die einzelnen Klassen aufweist, wie der Trainingsdatensatz.
   \subcaptionbox{\label{fig:g}}{\centering\includegraphics[width=0.4\textwidth]{Plots/confusion_matrix_smaller.pdf}}
   \hspace{8pt}
   \subcaptionbox{\label{fig:ug}}{\centering\includegraphics[width=0.4\textwidth]{Plots/confusion_matrix_equal.pdf}}
+  \renewcommand{\baselinestretch}{1.0}
   \caption{Die Verwirrungsmatrix für das gewichtete \protect\subref{fig:g} und das ungewichtete Training \protect\subref{fig:ug}.}\label{fig:eq_all}
+  \renewcommand{\baselinestretch}{1.5}
 \end{figure}
 %
 Ein Netz, welches einwandfrei alle Klassen erkennen kann würde eine
@@ -135,6 +152,8 @@ gesamten Datensatz gewichtet trainiert.
   \subcaptionbox{DRUSEN}{\centering\includegraphics[width=0.48\linewidth]{Plots/DRUSEN_or_not_log_smaller.pdf}}
   \hspace{8pt}
   \subcaptionbox{NORMAL}{\centering\includegraphics[width=0.48\linewidth]{Plots/NORMAL_or_not_log_smaller.pdf}}
-  \caption{Ausgabe des Netzes für Bilder der einzelnen Klassen (normiert auf die Gesamtzahl der Klasse). Durch die softmax Funktion kann der Ausgabewert als Wahrscheinlichkeit für die Angehörigkeit zu einer Klasse interpretiert werden. Zwei Bins der der Höhe 1 bei 0 und 1 würden eine perfekte Trennung repräsentieren.}
+  \renewcommand{\baselinestretch}{1.0}
+  \caption{Ausgabe des Netzes für Bilder der einzelnen Klassen (normiert auf die Gesamtzahl der Klasse). Durch die softmax Funktion kann der Ausgabewert als Wahrscheinlichkeit für die Angehörigkeit zu einer Klasse interpretiert werden. Zwei Bins der Höhe 1 bei 0 und 1 würden eine perfekte Trennung repräsentieren.}
+  \renewcommand{\baselinestretch}{1.5}
 \end{figure}
 %

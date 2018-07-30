@@ -1,4 +1,4 @@
-\chapter{Convolutional Neural Networks}\label{sec:netze}
+{\let\clearpage\relax \chapter{Convolutional Neural Networks}\label{sec:netze}}
 
 Zur Klassifizierung von Bildern haben sich in der Vergangenheit so genannte
 \textit{Convolutional Neural Networks} (CNN) als sehr effektiv bewiesen \cite{goodfellow}.
@@ -17,7 +17,7 @@ allgemein in 3 Punkten:
   Netzen durch eine einfache Matrixmultiplikation alle Knoten zwischen zwei
   Lagen wechselwirken zu lassen, werden durch kleine Kernelgrößen
   Eigenschaften auf deutlich kleineren subsamples der Eingabe bestimmt. Dies dient
-  z.B. der Erkennung von Strukturen und Eigenschaften der zu erkennenden Dinge.
+  z.B. der Erkennung von Strukturen und Eigenschaften der zu erkennenden Klassen.
   \item \textbf{Parameter}: In herkömmlichen Netzen werden die vom Netz
   generierten Gewichte exakt einmal genutzt, nämlich wenn die Ausgabe der
   besagten Lage generiert wird. CNN hingegen teilen sich diese Parameter mit
@@ -27,12 +27,12 @@ allgemein in 3 Punkten:
   Eigenschaft, die Equivarainz genannt wird. Das heißt, dass sich
   Verschiebungen der Eingabe genauso in der Ausgabe widerspiegeln. Dies ermöglicht
   CNN, bestimmte Eigenschaften in z.B. einem Bild an verschiedenen Orten zu erkennen
-  und deren gewichte zu teilen.
+  und deren Gewichte zu teilen.
 \end{enumerate}
 %
 Diese Unterschiede stellen bereits deutlich heraus, was CNN so geeignet für die
-Erkennung von Bildern macht. Die Verbindung von mehreren \textit{convolutional
-layern} ermöglicht so die sukzessive Erkennung von Strukturen in Bildern. \\
+Erkennung von Bildern macht. Die Verbindung von mehreren Faltungslagen
+ermöglicht so die sukzessive Erkennung von Strukturen in Bildern. \\
 Typisch für Netze mit der Aufgabe der Bilderkennung ist also eine oben
 beschriebene Faltungsoperation, gefolgt von einer nichtlinearen Aktivierung.
 Der Output dieser Faltungslagen wird in einem zweiten Schritt in einem so
@@ -43,6 +43,6 @@ Gelernte unabhängiger von kleinen Änderungen gemacht, da die Ausgabe des PL si
 unter kleinen Verschiebungen der Eingabe nur geringfügig ändern. Dieser Schritt
 stellt eine wichtige Komponente eines funktionierenden Netzes dar, wenn es
 nicht nur wichtig ist, wo sich ein bestimmtes Merkmal befindet, sondern
-ob es sich in dem Bild befindet.
+\textit{ob} es sich in dem Bild befindet.
 Außerdem spielen PL eine wichtige Rolle bei der Verarbeitung von Daten
 variabler Dimension.

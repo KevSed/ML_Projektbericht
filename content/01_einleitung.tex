@@ -1,4 +1,4 @@
-\chapter{Problemstellung und Datensatz}
+{\let\clearpage\relax \chapter{Problemstellung und Datensatz}}
 
 Das Feld des Maschinellen Lernens (ML) ist seit einiger Zeit eines der sich
 schnell entwickelnden und immer stärker viele praktische Anwendungen liefernden
@@ -28,13 +28,13 @@ Bilder des Querschnitts einer menschlichen Retina an lebenden Patienten
 zu erstellen \cite{paper}.\\
 Diese dienen erfahrenen Ärzten dazu frühzeitig Erkrankungen zu erkennen
 und so die richtigen Diagnosen zu stellen. Da das Erstellen solcher Bilder
-und die Diagnose anhand dieser die Zeit eines erfahrenen Arztes benötigt
+und die Diagnose anhand dieser die Zeit eines erfahrenen Arztes benötigen
 und viele Millionen solcher Bilder jährlich anfallen, ist die Suche nach
 einer automatisierten Diagnose bereits aus wirtschaftlicher Sicht sinnvoll.
 Außerdem lässt sich auch die Frage stellen, ob Verfahren des ML vielleicht
 sogar eine bessere Genauigkeit bei der Klassifizierung der Krankheiten erreichen
 können, als Ärzte.\\
-Aus dieser Motivation heraus beschäftigt sich diese Arbeut mit der folgenden
+Aus dieser Motivation heraus beschäftigt sich diese Arbeit mit der folgenden
 Problemstellung.\\
 \newline
 \noindent\fbox{%
@@ -70,17 +70,17 @@ Abbildung~\ref{fig:scans} dargestellt.
 %
 \begin{figure}
   \centering
-  \includegraphics[width=1.1\textwidth]{Plots/title.png}
+  \includegraphics[width=\textwidth]{Plots/title.png}
   \caption{Beispiele für die OCT Aufnahmen der 4 Klassen.}
   \label{fig:scans}
 \end{figure}
 %
-Es handelt sich um schwarz-weiße Bilder unterschiedlicher Größen. Es handelt
-sich bei den hier gezeigten Bildern um ideale Beispiele der einzelnen Klassen.
+Es handelt sich um schwarz-weiße Bilder unterschiedlicher Größen. Die hier
+gezeigten Bilder stellen ideale Beispiele der einzelnen Klassen dar.
 Bei der Betrachtung des Datensatzes fällt auf, dass die Ausrichtungen der
-einzelnen teilweise stark Bilder variieren. Um eine problemfreie
+einzelnen Bilder teilweise stark variieren. Um eine problemfreie
 Verarbeitung der Daten zu gewährleisten, werden diese daher zunächst auf eine
 Größe von $400\text{px}\times400\text{px}$ vereinheitlicht. Dies bedeutet also
 je nach Ausgangsbild den Verlust oder das Auffüllen von Pixeln. Die Grauwerte
 der Bilder werden für das Training auf einen Zahlenwert im Intervall $[0,\,1]$
-skaliert.
+skaliert.%

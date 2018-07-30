@@ -1,4 +1,4 @@
-\chapter{Ergebnisse}
+{\let\clearpage\relax \chapter{Ergebnisse}}
 
 Die Klassifizierung des Zustandes der menschlichen Retina anhand von OCT
 Aufnahmen in 4 Klassen (gesund + 3 Erkrankungen) lässt sich mit Hilfe des
@@ -19,27 +19,30 @@ ist.
 \begin{figure}[h!]
   \subcaptionbox{Genauigkeit\label{fig:gen}}{\centering\includegraphics[width=0.5\linewidth]{Plots/accuracy_history_smaller.pdf}}
   \subcaptionbox{Verlustfunktion\label{fig:lo}}{\centering\includegraphics[width=0.5\linewidth]{Plots/loss_history_smaller.pdf}}
-  \caption{Die Genauigkeit \protect\subref{fig:gen}, sowie die Verlustfunktion \protect\subref{fig:lo} der Hauptarchitektur des CNN. Es zeigen sich hier nach 40 Epochen keine Anzeichen für ein \textit{overtraining}.}
+  \renewcommand{\baselinestretch}{1.0}
+  \caption{Die Genauigkeit \protect\subref{fig:gen}, sowie die Verlustfunktion \protect\subref{fig:lo} der Hauptarchitektur des CNN. Es zeigen sich hier nach 40 Epochen keine Anzeichen für ein Übertraining.}
+  \renewcommand{\baselinestretch}{1.5}
   \label{fig:hist}
 \end{figure}
 %
 Betrachtet man Beispiele für die Klassen CNV, DRUSEN und NORMAL, deren
 Trennung für das Netz am schwierigsten ist, so fällt auf, dass es sich hierbei
 um Bilder handelt, die auch für Menschen schwierig zu trennen sind. Das Netz
-erreicht allerdings mit der oben beschriebenen Genauigkeit eine Präzesion, die
+erreicht allerdings mit der oben beschriebenen Genauigkeit eine Präzision, die
 weit über der eines ungelernten Auges liegt. Ärzte hingegen erreichen
-Genauigkeiten, die noch über dem hier erreichten Wert liegen.\\
+Genauigkeiten, die noch über dem hier erreichten Wert liegen.
 Eine Genauigkeit von $\SI{90}{\percent}$ durch Bilderkennung auf 4 Klassen zu
 erreichen, stellt allerdings eine sehr optimistisch stimmende Leistung dar.
 Ein Vergleich mit der Genauigkeit der Diagnose der Erkrankung CNV durch
 Mediziner zeigt, dass die hier erreichten $\SI{93}{\percent}$ über der in einer
 Studie~\cite{CNV} erreichten Genauigkeit von $\SI{86.5}{\percent}$ liegen.
-\newpage
 %
 \begin{figure}[h!]
+  \renewcommand{\baselinestretch}{1.0}
   \subcaptionbox{Verwirrungsmatrix\label{fig:conf}}{\centering\includegraphics[width=0.4\linewidth]{Plots/confusion_matrix_smaller.pdf}}
   \subcaptionbox{Verteilung des Outputs des Netzes für ein Validierungssample\label{fig:out}}{\centering\includegraphics[width=0.55\linewidth]{Plots/NORMAL_or_not_log_smaller.pdf}}
   \caption{Die Verwirrungsmatrix \protect\subref{fig:conf}, sowie der Output \protect\subref{fig:out} der Hauptarchitektur des CNN. Die Verwirrungsmatrix zeigt sehr hohe Genauigkeiten für die einzelnen Klassen. Der Output des Netzes zeigt ebenfalls eine gute Trennung der Krankheiten vom gesunden Auge.}
+  \renewcommand{\baselinestretch}{1.5}
   \label{fig:erg}
 \end{figure}
 %
@@ -50,13 +53,15 @@ Datensatzes, was eine deutliche Verringerung der Rechenzeit
 zur Folge hat, eine Lösung mit einem einfachen vollständig vernetzten Netz.
 Dabei ist eine Genauigkeit von etwa $\SI{73}{\percent}$ möglich. Dies liegt
 deutlich unterhalb dessen, was das CNN leisten kann und zeigt damit auch, dass
-CNN auf diesem Datensatz deutlich effektiver sind. Die damit erreichten
+CNN auf diesem Datensatz deutlich effektiver sind. Die erreichten
 $\SI{90}{\percent}$ Genauigkeit stellen damit ein sehr gutes Ergebnis dar.
 %
 \begin{figure}[h!]
   \subcaptionbox{Verwirrungsmatrix\label{fig:conf_alt}}{\centering\includegraphics[width=0.4\linewidth]{Plots/confusionmatrix6test.pdf}}
   \subcaptionbox{Verlauf der Genauigkeit\label{fig:acc_alt}}{\centering\includegraphics[width=0.55\linewidth]{Plots/accuracyhistory6.pdf}}
-  \caption{Die Verwirrungsmatrix \protect\subref{fig:conf_alt}, sowie der Verlauf der Genauigkeit \protect\subref{fig:acc_alt} während des Trainings der Alternativmethode. Die Verwirrungsmatrix zeigt deutlich geringere Genauigkeiten als das CNN. Der Verlauf der Genauigkeit zeigt, dass ein längeres Trainieren ins overtraining führt.}
+  \renewcommand{\baselinestretch}{1.0}
+  \caption{Die Verwirrungsmatrix \protect\subref{fig:conf_alt}, sowie der Verlauf der Genauigkeit \protect\subref{fig:acc_alt} während des Trainings der Alternativmethode. Die Verwirrungsmatrix zeigt deutlich geringere Genauigkeiten als das CNN. Der Verlauf der Genauigkeit zeigt, dass ein längeres Trainieren ins Übertraining führt.}
+  \renewcommand{\baselinestretch}{1.5}
   \label{fig:erg}
 \end{figure}
 %
