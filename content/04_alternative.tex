@@ -34,14 +34,14 @@ und damit auch die Anzahl der \textit{input features} bereits etwa um einen
 Faktor $30$.
 Das so entstandene Bild wird schließlich einem \textit{Pooling} unterzogen.
 Dazu wird in einem Fenster aus $2\times4$ Pixeln der Mittelwert berechnet und
-dieser einzelne Wert als Input gespeichert. Das Verfahren ist in
+dieser einzelne Wert gespeichert. Das Verfahren ist in
 Abbildung~\ref{fig:alter} veranschaulicht. \\
-Der so generierte Datensatz wird dann einem \textit{fully connected} Netz aus
+Der so generierte Datensatz wird dann einem vollständig vernetzten Netz aus
 Dichtelagen zum Training bereitgestellt. Die Architektur dieses Netzes ist in
 XXX dargestellt.\\
 Es handelt sich hierbei um ...\\
 Die hierzu verwendete Architektur ist das Ergebnis einer intensiven
-\textit{grid search}. Durch die Skalierung des Datensatzes und die Verwendung
+Optimierungsstudie. Durch die Skalierung des Datensatzes und die Verwendung
 eines deutlich kleineren Netzes kann die Rechenzeit für das Training eines
 Netzes stark reduziert werden. Dies ermöglicht auch eine intensive Suche nach
 der besten Hyperparameterkonfiguration. Dazu wurden die Anzahl der Dichtelagen

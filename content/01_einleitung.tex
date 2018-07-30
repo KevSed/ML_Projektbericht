@@ -36,6 +36,7 @@ sogar eine bessere Genauigkeit bei der Klassifizierung der Krankheiten erreichen
 können, als Ärzte.\\
 Aus dieser Motivation heraus beschäftigt sich diese Arbeut mit der folgenden
 Problemstellung.\\
+\newline
 \noindent\fbox{%
     \parbox{\textwidth}{%
         \centering
@@ -45,6 +46,8 @@ Problemstellung.\\
     }%
 }\\
 
+\section{Datensatz}
+%
 Der dazu verwendete Datensatz stammt von der Webseite \textit{kaggle}, welche
 viele Datensätze aus dem Gebiet der \textit{data science} zur Verfügung stellt.
 Er stammt aus einer Veröffentlichung \cite{paper}, welche sich mit derselben
@@ -75,4 +78,6 @@ Es handelt sich um schwarz-weiße Bilder unterschiedlicher Größen. Es fällt a
 auf, dass die Ausrichtungen der einzelnen Bilder variieren. Um eine problemfreie
 Verarbeitung der Daten zu gewährleisten, werden diese daher zunächst auf eine
 Größe von $400\text{px}\times400\text{px}$ vereinheitlicht. Dies bedeutet also
-je nach Ausgangsbild den Verlust oder das Auffüllen von Pixeln.
+je nach Ausgangsbild den Verlust oder das Auffüllen von Pixeln. Die Grauwerte
+der Bilder werden für das Training auf einen Zahlenwert im Intervall $[0,\,1]$
+skaliert.

@@ -5,28 +5,28 @@ Zur Klassifizierung von Bildern haben sich in der Vergangenheit so genannte
 Diese wenden, wie im Namen impliziert, die mathematische Operation der Faltung
 (oder in den meisten Fällen der Kreuzkorrelation) zwischen mindestens zwei
 \textit{layern} des Netzes an.
-Dazu wird ein Kernel definiert, welcher deutlich kleiner als der Input ist.
-Dieser Kernel rastert den Input ab und erzeugt dabei den Output lokal auf
-kleineren subsamples des Inputs. Dabei wird also ein set linearer Aktivierungen
+Dazu wird ein Kernel definiert, welcher deutlich kleiner als die Eingabe ist.
+Dieser Kernel rastert die Eingabe ab und erzeugt dabei die Ausgabe lokal auf
+kleineren subsamples der Eingabe. Dabei wird also ein set linearer Aktivierungen
 erzeugt.
 Diese speziellen neuronalen Netze unterscheiden sich von herkömmlichen Netzen
 allgemein in 3 Punkten:
 %
 \begin{enumerate}
-  \item \textbf{Wechselwirkungen}: Anstatt wie bei \textit{fully connected}
-  Netzen durch eine einfache Matrixmultiplikation alle Output-Knoten mit allen
-  Input-Knoten wechselwirken zu lassen, werden durch kleine Kernelgrößen
-  features auf deutlich kleineren subsamples des Inputs bestimmt. Dies dient
+  \item \textbf{Wechselwirkungen}: Anstatt wie bei vollständig vernetzten
+  Netzen durch eine einfache Matrixmultiplikation alle Knoten zwischen zwei
+  Lagen wechselwirken zu lassen, werden durch kleine Kernelgrößen
+  Eigenschaften auf deutlich kleineren subsamples der Eingabe bestimmt. Dies dient
   z.B. der Erkennung von Strukturen und Eigenschaften der zu erkennenden Dinge.
   \item \textbf{Parameter}: In herkömmlichen Netzen werden die vom Netz
-  generierten Gewichte exakt einmal genutzt, nämlich wenn der Output des
-  besagten layers generiert wird. CNN hingegen teilen sich diese Parameter mit
-  verschiedenen Inputs. Gewichte eines Inputs sind also an Gewichte eines
-  anderen inputs gebunden, da derselbe Kernel überall angewandt wird.
+  generierten Gewichte exakt einmal genutzt, nämlich wenn die Ausgabe der
+  besagten Lage generiert wird. CNN hingegen teilen sich diese Parameter mit
+  verschiedenen Knoten. Gewichte eines Knotens sind also an Gewichte eines
+  Anderen gebunden, da derselbe Kernel überall angewandt wird.
   \item \textbf{Equivarainz}: Die Struktur von CNN verleiht diesen eine
   Eigenschaft, die Equivarainz genannt wird. Das heißt, dass sich
-  Verschiebungen des Inputs genauso im Output widerspiegeln. Dies ermöglicht
-  CNN, bestimmte features in z.B. einem Bild an verschiedenen Orten zu erkennen
+  Verschiebungen der Eingabe genauso in der Ausgabe widerspiegeln. Dies ermöglicht
+  CNN, bestimmte Eigenschaften in z.B. einem Bild an verschiedenen Orten zu erkennen
   und deren gewichte zu teilen.
 \end{enumerate}
 %
@@ -38,13 +38,13 @@ beschriebene Faltungsoperation, gefolgt von einer nichtlinearen Aktivierung.
 Der Output dieser Faltungslagen wird in einem zweiten Schritt in einem so
 genannten \textbf{pooling layer} (PL) verarbeitet. Dieser nimmt im Prinzip eine
 Vergröberung vor. Der hier verwendete \textit{max pooling layer} z.B. ersetzt
-den Input in einem bestimmten, kleinen Bereich durch das Maximum. So wird der
-Input unabhängiger von kleinen Änderungen gemacht, da die Outputs des PL sich
-unter kleinen Verschiebungen des Inputs nur geringfügig ändern. Dieser Schritt
+die Eingabe in einem bestimmten, kleinen Bereich durch das Maximum. So wird das
+Gelernte unabhängiger von kleinen Änderungen gemacht, da die Ausgabe des PL sich
+unter kleinen Verschiebungen der Eingabe nur geringfügig ändern. Dieser Schritt
 stellt eine wichtige Komponente eines funktionierenden Netzes dar, wenn es
-nicht nur wichtig ist, wo sich ein bestimmtes feature befindet, sondern
+nicht nur wichtig ist, wo sich ein bestimmtes Merkmal befindet, sondern
 ob es sich in dem Bild befindet.
-Außerdem spielen PL eine wichtige Rolle bei der Verarbeitung von Input
+Außerdem spielen PL eine wichtige Rolle bei der Verarbeitung von Daten
 variabler Dimension.
 
 \textbf{[DENSE LAYER]}

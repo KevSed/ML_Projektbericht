@@ -8,15 +8,15 @@ funktionierende Grundlage für das vorliegende Problem ist.
 Daher besitzt die Hauptarchitektur zwei Einheiten dieser Kombination
 direkt zu Beginn des Netzes. Hier soll also die Zerlegung der Bilder auf
 die in Abschnitt~\ref{sec:netze} beschriebene Weise stattfinden.
-Die beiden \texttt{Conv2D} Lagen rastern den Input über einen $4\times4$
+Die beiden \texttt{Conv2D} Lagen rastern das Bild über einen $4\times4$
 Kernel ab. Daher entstehen die in Tabelle~\ref{tab:haupt} aufgeführten
 Dimensionen. Das Bild wird mit $(2, 2)$ \textit{strides} durchfahren,
 sodass sich die Dimension des Bildes von $400\times400$ zunächst auf
-$199\times199$ reduziert. Eine \texttt{MaxPooling} Lage reduziert den
-Input mit $(3, 3)$ \textit{strides} auf $66\times66$. Die folgende Einheit
+$199\times199$ reduziert. Eine \texttt{MaxPooling} Lage reduziert diese
+mit $(3, 3)$ \textit{strides} auf $66\times66$. Die folgende Einheit
 aus  \texttt{Conv2D} und \texttt{MaxPooling} Lage lieferen schließlich
 einen Output der Dimension $10\times10$.\\
-Dieser Output wird schließlich in den \textit{fully connected} Teil des
+Dieser Output wird schließlich in den vollständig vernetzten Teil des
 Netzes gespeist. Hierbei hat sich gezeigt, dass sowohl eine kleine Anzahl
 Filter in der Größenordnung $64$ als auch eine sehr große Zahl der
 Größenordnung $1000$ die Leistung des Netzes verringern. Bei einer sehr großen
@@ -52,16 +52,16 @@ beste Ergebnis gewählt.
       Gesamtanzahl Parameter &                & 1\,358\,696 \\
       \bottomrule
   \end{tabular}
-  \label{tab:haupt}
   \caption{Einzelne Lagen, sowie die jeweiligen Dimensionen des Outputs für für Hauptarchitektur des CNN.}
+  \label{tab:haupt}
 \end{table}
 %
 Eine automatisierte Suche nach der besten Architektur in Form einer
-\textit{grid search} ist für dieses Netz mit den dafür zur Verfügung stehenden
+Optimierungsstudie ist für dieses Netz mit den dafür zur Verfügung stehenden
 Mitteln in endlicher Zeit nicht umzusetzen. Der Hohe Bedarf an Arbeitsspeicher
 und CPU-Leistung steht leider nicht zur Verfügung. Allerdings zeigte sich durch
 etwa ein Dutzend Iterationen, dass das hier vorliegende Netz gute Leistungen
-erbringt. Zwischen dem CNN und dem \textit{fully connected network} sowie vor
+erbringt. Zwischen dem CNN und dem vollständig vernetzten Netz sowie vor
 den letzten beiden Dichtelagen wird außerdem \texttt{Dropout} angewandt.
 Dabei werden einzelne Knoten innerhalb des Netzes mit einer spezifizierten Rate
 vom Training exkludiert. Das Training erfolgt also auf einem zufällig
@@ -96,19 +96,24 @@ Genauigkeit verzerrt, da auch der Validierungsdatensatz diese Verteilung
 widerspiegelt. Um dieser Problematik zu begegnen werden dem Netz zum Training
 auch noch Gewichte für die einzelnen Bilder übergeben. Diese sind einheitlich
 für jede Klasse und gleichen genau diese Unterschiede aus.
-In Abbildung~\ref{fig:eq_all} sind zum Vergleich die \textit{confusion matrix}
+In Abbildung~\ref{fig:eq_all} sind zum Vergleich die Verwirrungsmatrizen
 für ein gewichtetes Training, sowie für ein ungewichtetes Training dargestellt.
 Die \textit{performance plots} sind allesamt auf einem Validierungsdatensatz
 von insgesamt $24\,686$ Bildern entstanden, welcher dieselbe Verteilung auf
 die einzelnen Klassen aufweist, wie der Trainingsdatensatz.
 %
 \begin{figure}[h!]
-  \subcaptionbox{Die \textit{confusion matrix} für das gewichtete Training.}{\includegraphics[width=0.5\textwidth]{Plots/confusion_matrix_smaller.pdf}}
+  \subcaptionbox{Die Verwirrungsmatrix für das gewichtete Training.}{\includegraphics[width=0.5\textwidth]{Plots/confusion_matrix_smaller.pdf}}
   \hspace{8pt}
-  \subcaptionbox{Die \textit{confusion matrix} für das ungewichtete Training.}{\includegraphics[width=0.5\textwidth]{Plots/confusion_matrix_equal.pdf}}
+  \subcaptionbox{Die Verwirrungsmatrix für das ungewichtete Training.}{\includegraphics[width=0.5\textwidth]{Plots/confusion_matrix_equal.pdf}}
   \label{fig:eq_all}
 \end{figure}
 %
+Ein Netz, welches einwandfrei alle Klassen erkennen kann würde eine
+Diagonalmatrix liefern. Allerdings zeugt auch eine diagonal-dominante Matrix
+von einer gut funktionierenden Trennung. In diesem Falle sind die Einträge der
+Matrix auf die Gesamtzahl der Bilder jeder wahren Klasse normiert, sodass die
+Diagonaleinträge direkt die Genauigkeit für die explizite Klasse angeben.
 Hierbei zeigt sich klar, dass bei dem ungewichteten Training wie erwartet die
 Genauigkeiten für die Klassen mit vielen Bildern stark zunimmt, während die
 kleinste Klasse (hier DRUSEN) am schlechtesten erkannt wird. Um dennoch von

@@ -32,13 +32,13 @@ Genauigkeiten, die noch über dem hier erreichten Wert liegen.\\
 Eine Genauigkeit von $\SI{90}{\percent}$ durch Bilderkennung auf 4 Klassen zu
 erreichen, stellt allerdings eine sehr optimistisch stimmende Leistung dar.
 Besonders in der Medizin können solche Anwendungen auch eine äußerst praktische
-Anwendung finden.\\
-
+Anwendung finden.
+\newpage
 %
 \begin{figure}[h!]
-  \subcaptionbox{\textit{confusion matrix}}{\centering\includegraphics[width=0.4\linewidth]{Plots/confusion_matrix_smaller.pdf}}
+  \subcaptionbox{Verwirrungsmatrix}{\centering\includegraphics[width=0.4\linewidth]{Plots/confusion_matrix_smaller.pdf}}
   \subcaptionbox{Verteilung des Outputs des Netzes für ein Validierungssample.}{\centering\includegraphics[width=0.55\linewidth]{Plots/NORMAL_or_not_log_smaller.pdf}}
-  \caption{Die \textit{confusion matrix} (a), sowie der Output (b) der Hauptarchitektur des CNN. Die \textit{confusion matrix} zeigt sehr hohe Genauigkeiten für die einzelnen Klassen. Der Output des Netzes zeigt ebenfalls eine gute Trennung der Krankheiten vom gesunden Auge.}
+  \caption{Die Verwirrungsmatrix (a), sowie der Output (b) der Hauptarchitektur des CNN. Die Verwirrungsmatrix zeigt sehr hohe Genauigkeiten für die einzelnen Klassen. Der Output des Netzes zeigt ebenfalls eine gute Trennung der Krankheiten vom gesunden Auge.}
   \label{fig:erg}
 \end{figure}
 %
@@ -46,5 +46,5 @@ Allerdings zeigt diese Arbeit auch, dass sich mit deutlich einfacheren
 Architekturen funktionierende Modelle entwickeln lassen. Insbesondere zeigt
 sich trotz starker Skalierung des Datensatzes, was eine deutliche Steigerung
 der \textit{computing performance} zur Folge hat, eine Lösung mit einem
-einfachen \textit{fully connected} Netz. Dabei sind Genauigkeiten von etwa
+einfachen vollständig vernetzten Netz. Dabei sind Genauigkeiten von etwa
 $\SI{73}{\percent}$ möglich.
