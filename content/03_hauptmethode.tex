@@ -111,9 +111,9 @@ von insgesamt $24\,686$ Bildern entstanden, welcher dieselbe Verteilung auf
 die einzelnen Klassen aufweist, wie der Trainingsdatensatz.
 %
 \begin{figure}[h!]
-  \subcaptionbox{\label{fig:g}}{\includegraphics[width=0.5\textwidth]{Plots/confusion_matrix_smaller.pdf}}
+  \subcaptionbox{\label{fig:g}}{\centering\includegraphics[width=0.4\textwidth]{Plots/confusion_matrix_smaller.pdf}}
   \hspace{8pt}
-  \subcaptionbox{\label{fig:ug}}{\includegraphics[width=0.5\textwidth]{Plots/confusion_matrix_equal.pdf}}
+  \subcaptionbox{\label{fig:ug}}{\centering\includegraphics[width=0.4\textwidth]{Plots/confusion_matrix_equal.pdf}}
   \caption{Die Verwirrungsmatrix für das gewichtete \protect\subref{fig:g} und das ungewichtete Training \protect\subref{fig:ug}.}\label{fig:eq_all}
 \end{figure}
 %
@@ -127,3 +127,14 @@ Genauigkeiten für die Klassen mit vielen Bildern stark zunimmt, während die
 kleinste Klasse (hier DRUSEN) am schlechtesten erkannt wird. Um dennoch von
 einem möglichst großen Datensatz zu profitieren, wurde das Modell mit dem
 gesamten Datensatz gewichtet trainiert.
+%
+\begin{figure}[h!]
+  \subcaptionbox{DME}{\centering\includegraphics[width=0.48\linewidth]{Plots/DME_or_not_log_smaller.pdf}}
+  \hspace{8pt}
+  \subcaptionbox{CNV}{\centering\includegraphics[width=0.48\linewidth]{Plots/CNV_or_not_log_smaller.pdf}}
+  \subcaptionbox{DRUSEN}{\centering\includegraphics[width=0.48\linewidth]{Plots/DRUSEN_or_not_log_smaller.pdf}}
+  \hspace{8pt}
+  \subcaptionbox{NORMAL}{\centering\includegraphics[width=0.48\linewidth]{Plots/NORMAL_or_not_log_smaller.pdf}}
+  \caption{Ausgabe des Netzes für Bilder der einzelnen Klassen (normiert auf die Gesamtzahl der Klasse). Durch die softmax Funktion kann der Ausgabewert als Wahrscheinlichkeit für die Angehörigkeit zu einer Klasse interpretiert werden. Zwei Bins der der Höhe 1 bei 0 und 1 würden eine perfekte Trennung repräsentieren.}
+\end{figure}
+%

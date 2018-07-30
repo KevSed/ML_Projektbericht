@@ -58,8 +58,10 @@ der besten Hyperparameterkonfiguration. Dazu wurden die Anzahl der Dichtelagen
 in Kombination mit der Anzahl der Filter der einzelnen Dichtelagen, die
 Aktivierungsfunktion in den Dichtelagen, sowie die Aktivierungsfunktion der
 letzten Lage, sowie die Raten für die \textit{Dropout} Lagen variiert. So
-konnten insgesamt mehr als $120$ Modellarchitekturen getestet werden. Dabei
-wurden alle Kombinationen der in Tabelle~\ref{tab:grid} aufgeführten
+konnten insgesamt mehr als $120$ Modellarchitekturen getestet werden. Die
+Genauigkeiten für einige Konfigurationen sind in Abbildung~\ref{fig:accs} in 
+Abhängigkeit der batch size dargestellt.
+Dabei wurden alle Kombinationen der in Tabelle~\ref{tab:grid} aufgeführten
 Parameterbereiche getestet. Es handelt sich hierbei um fünf Grundsrukturen.
 Das Training wird grundsätzlich 150 Epochen auf $\SI{67.5}{\percent}$ des
 Datensatzes vollzogen. $\SI{25}{\percent}$ des Datensatzes bilden den

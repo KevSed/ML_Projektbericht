@@ -8,12 +8,12 @@ ist, erfordert allerdings eine sehr hohe Rechenkapazität. Der verwendete
 Datensatz liefert mit etwa $90\,000$ Bildern in sehr guter Auflösung eine
 ausreichende Statistik, um gute Ergebnisse zu erzielen.
 Die Hauptarchitektur eines CNN zeigt hierbei mit Abstand die beste
-\textit{performance}. Nach etwa 40 Epochen lässt sich mit diesem Netz ein
+Genauigkeit. Nach etwa 40 Epochen lässt sich mit diesem Netz ein
 Modell generieren, welches 4 Klassen mit einer Genauigkeit von
 $\SI{90}{\percent}$ unterscheiden kann. Durch die Architektur können so Bilder
 verschiedener Größen und Datensätze unterschiedlicher Verteilungen zur
 Vorhersage verwendet werden. Durch ausreichende Regularisierung treten keine
-Effekte von \textit{overtraining} auf, wie in Abbildung~\ref{fig:hist} zu sehen
+Effekte von Übertraining auf, wie in Abbildung~\ref{fig:hist} zu sehen
 ist.
 %
 \begin{figure}[h!]
@@ -27,12 +27,13 @@ Betrachtet man Beispiele für die Klassen CNV, DRUSEN und NORMAL, deren
 Trennung für das Netz am schwierigsten ist, so fällt auf, dass es sich hierbei
 um Bilder handelt, die auch für Menschen schwierig zu trennen sind. Das Netz
 erreicht allerdings mit der oben beschriebenen Genauigkeit eine Präzesion, die
-weit über der eines ungelernten Auges reicht. Ärzte hingegen erreichen
+weit über der eines ungelernten Auges liegt. Ärzte hingegen erreichen
 Genauigkeiten, die noch über dem hier erreichten Wert liegen.\\
 Eine Genauigkeit von $\SI{90}{\percent}$ durch Bilderkennung auf 4 Klassen zu
 erreichen, stellt allerdings eine sehr optimistisch stimmende Leistung dar.
-Besonders in der Medizin können solche Anwendungen auch eine äußerst praktische
-Anwendung finden.
+Ein Vergleich mit der Genauigkeit der Diagnose der Erkrankung CNV durch
+Mediziner zeigt, dass die hier erreichten $\SI{93}{\percent}$ über der in einer
+Studie~\cite{CNV} erreichten Genauigkeit von $\SI{86.5}{\percent}$ liegen.
 \newpage
 %
 \begin{figure}[h!]
@@ -43,12 +44,14 @@ Anwendung finden.
 \end{figure}
 %
 Allerdings zeigt diese Arbeit auch, dass sich mit deutlich einfacheren
-Architekturen funktionierende Modelle entwickeln lassen. Insbesondere zeigt
-sich trotz starker Skalierung des Datensatzes, was eine deutliche Steigerung
-der \textit{computing performance} zur Folge hat, eine Lösung mit einem
-einfachen vollständig vernetzten Netz. Dabei ist eine Genauigkeit von etwa
-$\SI{73}{\percent}$ möglich. Dies liegt deutlich unterhalb dessen, was das CNN
-leisten kann.
+Architekturen funktionierende Modelle entwickeln lassen, deren Genauigkeit weit
+über dem Zufall liegen. Insbesondere zeigt sich trotz starker Skalierung des
+Datensatzes, was eine deutliche Verringerung der Rechenzeit
+zur Folge hat, eine Lösung mit einem einfachen vollständig vernetzten Netz.
+Dabei ist eine Genauigkeit von etwa $\SI{73}{\percent}$ möglich. Dies liegt
+deutlich unterhalb dessen, was das CNN leisten kann und zeigt damit auch, dass
+CNN auf diesem Datensatz deutlich effektiver sind. Die damit erreichten
+$\SI{90}{\percent}$ Genauigkeit stellen damit ein sehr gutes Ergebnis dar.
 %
 \begin{figure}[h!]
   \subcaptionbox{Verwirrungsmatrix\label{fig:conf_alt}}{\centering\includegraphics[width=0.4\linewidth]{Plots/confusionmatrix6test.pdf}}
