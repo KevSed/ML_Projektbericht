@@ -69,16 +69,24 @@ generierten Teilnetz. Dies stellt eine sehr einfache und kostengünstige Art
 der Regularisierung dar. Durch die \texttt{Dropout} Lagen wird verhindert,
 dass ein so großes Netz zu schnell übertrainiert wird. \\
 Die nichtlinearen Aktivierungsfunktionen in dieser Architektur sind in allen
-entsprechenden Lagen \textbf{elu} Funktionen und in der letzten Lage die
+entsprechenden Lagen \textit{exponential linear unit} (\textbf{elu}) Funktionen und in der letzten Lage die
 \textbf{softmax} Funktion. Diese gewährleistet die Interpretation des
 Netz-Outputs als Wahrscheinlichkeit für eine bestimmte Klasse.
 Die \textbf{elu} Funktionen zeigten für verschiedene Architekturen die beste
-Leistung. Im Vergleich z.B. zur \textbf{relu} Funktion zeigte sich allerdings
+Leistung. Im Vergleich z.B. zur \textit{rectified linear unit} (\textbf{relu}) Funktion zeigte sich allerdings
 lediglich ein leichter Vorteil der \textbf{elu} Funktion.\\
+Das Modell wurde 40 Epochen lang mit einer \textit{batch size} von 100 Bildern
+trainiert. Das bedeutet, das immer 100 Bilder gleichzeitig durch das Netz
+propagieren. Dies wird innerhalb einer Epoche wiederholt, bis alle Bilder
+verwendet wurden. Als Metrik für die Quantifisierung der Verbesserung des
+Netzes wurde die Genauigkeit verwendet und als Verlustfunktion die
+kategorische Kreuzentropie. Der Optimierer, der sich hier als am besten zeigte
+ist der Adam Optimierer.
 
 \section{Training}
 %
-Das Netz wurde so auf insgesamt $57\,598$ Bildern trainiert. Dabei ist die
+Das Netz wurde so auf $\SI{70}{\percent}$ des Datensatzes, also insgesamt
+$57\,598$ Bildern trainiert und auf \SI{30}{\percent} validiert. Dabei ist die
 Verteilung der Bilder auf die einzelnen Klassen jedoch nicht homogen, wie in
 Abbildung~\ref{fig:count} dargestellt.
 %
@@ -103,10 +111,10 @@ von insgesamt $24\,686$ Bildern entstanden, welcher dieselbe Verteilung auf
 die einzelnen Klassen aufweist, wie der Trainingsdatensatz.
 %
 \begin{figure}[h!]
-  \subcaptionbox{Die Verwirrungsmatrix für das gewichtete Training.}{\includegraphics[width=0.5\textwidth]{Plots/confusion_matrix_smaller.pdf}}
+  \subcaptionbox{\label{fig:g}}{\includegraphics[width=0.5\textwidth]{Plots/confusion_matrix_smaller.pdf}}
   \hspace{8pt}
-  \subcaptionbox{Die Verwirrungsmatrix für das ungewichtete Training.}{\includegraphics[width=0.5\textwidth]{Plots/confusion_matrix_equal.pdf}}
-  \label{fig:eq_all}
+  \subcaptionbox{\label{fig:ug}}{\includegraphics[width=0.5\textwidth]{Plots/confusion_matrix_equal.pdf}}
+  \caption{Die Verwirrungsmatrix für das gewichtete \protect\subref{fig:g} und das ungewichtete Training \protect\subref{fig:ug}.}\label{fig:eq_all}
 \end{figure}
 %
 Ein Netz, welches einwandfrei alle Klassen erkennen kann würde eine

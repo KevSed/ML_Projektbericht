@@ -130,6 +130,9 @@
 \addbibresource{references.bib}  % die Bibliographie einbinden
 \DefineBibliographyStrings{german}{andothers = {{et\,al\adddot}}}
 
+\usepackage[labelformat=simple]{subcaption}
+\renewcommand\thesubfigure{(\alph{subfigure})}
+
 %------------------------------------------------------------------------------
 %------------------------------ Sonstiges: ------------------------------------
 %------------------------------------------------------------------------------
@@ -178,7 +181,7 @@
 
 \appendix
 % Hier beginnt der Anhang, nummeriert in lateinischen Buchstaben
-% \input{content/a_anhang.tex}
+\input{content/a_anhang.tex}
 
 \backmatter
 \printbibliography

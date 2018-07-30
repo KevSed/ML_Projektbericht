@@ -1,4 +1,4 @@
-\chapter{Alternative Methode}
+\chapter{Alternative Methode}\label{sec:alter}
 
 Als alternative Methode zur Klassifizierung der 4 Klassen wird ebenfalls ein
 neuronales Netz verwendet. Es erwies sich als äußerst schwierig, für diese
@@ -34,12 +34,22 @@ und damit auch die Anzahl der \textit{input features} bereits etwa um einen
 Faktor $30$.
 Das so entstandene Bild wird schließlich einem \textit{Pooling} unterzogen.
 Dazu wird in einem Fenster aus $2\times4$ Pixeln der Mittelwert berechnet und
-dieser einzelne Wert gespeichert. Das Verfahren ist in
+dieser einzelne Wert gespeichert. Das Ergebnis dieses Verfahrens ist in
 Abbildung~\ref{fig:alter} veranschaulicht. \\
 Der so generierte Datensatz wird dann einem vollständig vernetzten Netz aus
-Dichtelagen zum Training bereitgestellt. Die Architektur dieses Netzes ist in
-XXX dargestellt.\\
-Es handelt sich hierbei um ...\\
+Dichtelagen zum Training bereitgestellt. \\
+%
+\begin{figure}[h!]
+  \subcaptionbox{\label{fig:acc0}}{\includegraphics[width=0.3\linewidth]{Plots/Modelvalacc0.pdf}}
+  \subcaptionbox{\label{fig:acc1}}{\includegraphics[width=0.3\linewidth]{Plots/Modelvalacc1.pdf}}
+  \subcaptionbox{\label{fig:acc3}}{\includegraphics[width=0.3\linewidth]{Plots/Modelvalacc2.pdf}}
+  \subcaptionbox{\label{fig:acc4}}{\includegraphics[width=0.3\linewidth]{Plots/Modelvalacc3.pdf}}
+  \hspace{20pt}
+  \subcaptionbox{\label{fig:acc5}}{\includegraphics[width=0.3\linewidth]{Plots/Modelvalacc4.pdf}}
+  \caption{Erreichte Genauigkeiten für die fünf Grundstrukturen der Alternativmethode. Die Genauigkeit ist in Abhängigkeit der \textit{batch size} für verschiedene Aktivierungsfunktionen dargestellt.}
+  \label{fig:accs}
+\end{figure}
+%
 Die hierzu verwendete Architektur ist das Ergebnis einer intensiven
 Optimierungsstudie. Durch die Skalierung des Datensatzes und die Verwendung
 eines deutlich kleineren Netzes kann die Rechenzeit für das Training eines
@@ -48,5 +58,20 @@ der besten Hyperparameterkonfiguration. Dazu wurden die Anzahl der Dichtelagen
 in Kombination mit der Anzahl der Filter der einzelnen Dichtelagen, die
 Aktivierungsfunktion in den Dichtelagen, sowie die Aktivierungsfunktion der
 letzten Lage, sowie die Raten für die \textit{Dropout} Lagen variiert. So
-konnten insgesamt mehr als $120$ Modellarchitekturen getestet werden. Die
-Architektur mit der höchsten \textit{performance} ist oben beschrieben.
+konnten insgesamt mehr als $120$ Modellarchitekturen getestet werden. Dabei
+wurden alle Kombinationen der in Tabelle~\ref{tab:grid} aufgeführten
+Parameterbereiche getestet. Es handelt sich hierbei um fünf Grundsrukturen.
+Das Training wird grundsätzlich 150 Epochen auf $\SI{67.5}{\percent}$ des
+Datensatzes vollzogen. $\SI{25}{\percent}$ des Datensatzes bilden den
+Validierungsdatensatz, während die übrigen $\SI{7.5}{\percent}$ als
+Testdatensatz verwendet werden.
+Da unter all diesen Möglichkeiten auch einige Architekturen sind, die sehr
+ungeeignet sind, werden die Modelle anhand ihrer Genauigkeit und dem Verlauf
+der Verlustfunktionen gefiltert. Es werden zunächst nur Modelle gespeichert,
+deren Genauigkeit mindestens einen Wert von $\SI{73}{\percent}$ erreicht.
+Anschließend werden Modelle verworfen, die ein zu starkes overtraining
+aufweisen. Dazu wird gefordert, dass der Wert der Verlustfunktion zwischen der
+ersten und letzten Epoche um mindestens $\SI{5}{\percent}$ sinkt.\\
+Aus der Optimierungsstudie ergeben sich 12 Modelle nach der Selektion, aus
+denen das beste Modell innerhalb der gewählten Parameterräume als
+Alternativmethode verwendet wird.\\

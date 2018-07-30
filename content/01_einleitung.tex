@@ -2,7 +2,7 @@
 
 Das Feld des Maschinellen Lernens (ML) ist seit einiger Zeit eines der sich
 schnell entwickelnden und immer stärker viele praktische Anwendungen liefernden
-Gebiete. Nicht nur in der Wissenschaft werden die Möglichkeiten dieser Methoden
+Gebiete \cite{goodfellow}. Nicht nur in der Wissenschaft werden die Möglichkeiten dieser Methoden
 immer stärker genutzt. Auch in vielen anderen Gebieten wird von Bild- und
 Spracherkennung, Datenanalyse und Vorhersage bis hin zu medizinischen Diagnosen
 profitiert. Die Methoden des maschinellen Lernens ermöglichen viele bisher nicht
@@ -21,11 +21,11 @@ diskutiert.
 
 \section{Problemstellung}
 
-Die optische Kohärenztomograhpie (OCT) ist ein weit verbreitetes optische
+Die optische Kohärenztomograhpie (OCT) ist ein weit verbreitetes, optisches
 Bildgebungsverfahren, welches zum Beispiel in der Medizin Verwendung
 findet. Es kann dazu verwendet werden, nicht-invasiv hochauflösende
 Bilder des Querschnitts einer menschlichen Retina an lebenden Patienten
-zu erstellen.\\
+zu erstellen \cite{paper}.\\
 Diese dienen erfahrenen Ärzten dazu frühzeitig Erkrankungen zu erkennen
 und so die richtigen Diagnosen zu stellen. Da das Erstellen solcher Bilder
 und die Diagnose anhand dieser die Zeit eines erfahrenen Arztes benötigt
@@ -48,12 +48,13 @@ Problemstellung.\\
 
 \section{Datensatz}
 %
-Der dazu verwendete Datensatz stammt von der Webseite \textit{kaggle}, welche
-viele Datensätze aus dem Gebiet der \textit{data science} zur Verfügung stellt.
-Er stammt aus einer Veröffentlichung \cite{paper}, welche sich mit derselben
+Der dazu verwendete Datensatz \cite{oct-data} stammt von der Webseite
+\textit{kaggle}, welche viele Datensätze aus dem Gebiet der Datenanalyse zur
+Verfügung stellt. Er stammt ursprünglich aus einer Veröffentlichung
+\cite{paper}, welche sich mit derselben
 Fragestellung befasst, wie die in dieser Arbeit diskutierten. \\
 Der Datensatz ist unter der \textit{Creative Commons} Lizenz
-\texttt{CC BY-NC-SA 4.0} veröffentlicht und enthält $84\,495$ Bilder im
+\texttt{CC BY-NC-SA 4.0} veröffentlicht und enthält $83\,484$ Bilder im
 JPEG-Format. Diese sind jeweils etwa $500\text{px}\times500\text{px}$ groß
 und repräsentieren OCT-Aufnahmen von 4 Klassen:
 %
@@ -74,8 +75,10 @@ Abbildung~\ref{fig:scans} dargestellt.
   \label{fig:scans}
 \end{figure}
 %
-Es handelt sich um schwarz-weiße Bilder unterschiedlicher Größen. Es fällt auch
-auf, dass die Ausrichtungen der einzelnen Bilder variieren. Um eine problemfreie
+Es handelt sich um schwarz-weiße Bilder unterschiedlicher Größen. Es handelt
+sich bei den hier gezeigten Bildern um ideale Beispiele der einzelnen Klassen.
+Bei der Betrachtung des Datensatzes fällt auf, dass die Ausrichtungen der
+einzelnen teilweise stark Bilder variieren. Um eine problemfreie
 Verarbeitung der Daten zu gewährleisten, werden diese daher zunächst auf eine
 Größe von $400\text{px}\times400\text{px}$ vereinheitlicht. Dies bedeutet also
 je nach Ausgangsbild den Verlust oder das Auffüllen von Pixeln. Die Grauwerte

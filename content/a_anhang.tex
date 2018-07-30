@@ -1,3 +1,33 @@
-\chapter{Ein Anhangskapitel}
+\chapter{Optimierungsstudie für die Alternativmethode}
 
-Hier könnte ein Anhang stehen, falls Sie z.B. Code, Konstruktionszeichnungen oder Ähnliches mit in die Arbeit bringen wollen. Im Normalfall stehen jedoch alle Ihre Resultate im Hauptteil der Bachelorarbeit und ein Anhang ist überflüssig.
+%
+\begin{table}
+  \centering%
+  \begin{tabular}{l
+                  c
+                  c}
+      \toprule
+      {}    & Anzahl der Dichtelagen + Filter     & Struktur der Dropout Lagen      \\
+      \midrule
+      Modell 0    & (1024, 512, 128, 64, 32)  & (0.5, 0.4, 0.4, 0.3, 0.2) \\
+      Modell 1    & (1024, 512, 256, 128, 64, 32, 16)  & (0.5, 0.4, 0.4, 0.4, 0.2, 0.2, 0.1) \\
+      Modell 2    & (512, 256, 128, 64, 32, 16)  & (0.4, 0.4, 0.3, 0.3, 0.2, 0.1) \\
+      Modell 3    & (1024, 256, 64, 16)  & (0.6, 0.4, 0.2, 0.1) \\
+      Modell 4    & (512, 128, 32)  & (0.5, 0.3, 0.1) \\
+      \bottomrule
+  \end{tabular}
+  \caption{Getestete Grundstrukturen für die Netzarchitekturen der alternativen Methode.}
+  \label{tab:grid}
+\end{table}
+%
+%
+\begin{figure}[h!]
+  \subcaptionbox*{}{\includegraphics[width=0.3\linewidth]{Plots/Alternative_Beispiele/imageCNVscan.pdf}}
+  \subcaptionbox*{}{\includegraphics[width=0.3\linewidth]{Plots/Alternative_Beispiele/imageDMEscan.pdf}}
+  \subcaptionbox*{}{\includegraphics[width=0.3\linewidth]{Plots/Alternative_Beispiele/imageNORMALscan.pdf}}
+  \subcaptionbox*{}{\includegraphics[width=0.3\linewidth]{Plots/Alternative_Beispiele/imageCNVmeans.pdf}}
+  \subcaptionbox*{}{\includegraphics[width=0.3\linewidth]{Plots/Alternative_Beispiele/imageDMEmeans.pdf}}
+  \subcaptionbox*{}{\includegraphics[width=0.3\linewidth]{Plots/Alternative_Beispiele/imageNORMALmeans.pdf}}
+  \caption{Beispielbilder der anderen drei Klassen für die Skalierung der Bilder und die Bestimmung der Mittelwerte durch Abrastern im Rahmen der Alternativmethode.}
+\end{figure}
+%
