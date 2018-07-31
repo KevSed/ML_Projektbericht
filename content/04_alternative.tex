@@ -1,5 +1,5 @@
-{\let\clearpage\relax \chapter{Alternative Methode}\label{sec:alter}}
-
+\chapter{Alternative Methode}\label{sec:alter}
+%
 Als alternative Methode zur Klassifizierung der 4 Klassen wird ebenfalls ein
 neuronales Netz verwendet. Es erwies sich als äußerst schwierig, für diese
 Problemstellung einen Lösungsansatz zu finden, der auf die Verwendung
@@ -15,18 +15,16 @@ Außerdem wird der Datensatz so weit herunterskaliert, dass das Training auf
 einem herkömmlichen PC in vertretbarer Rechenzeit durchgeführt werden kann.
 %
 \begin{figure}[h!]
-  \renewcommand{\baselinestretch}{1.0}
   \subcaptionbox{Auf eine Größe von $50\text{px}\times100\text{px}$ skaliertes Beispielbild.}{\centering\includegraphics[width=0.5\linewidth]{Plots/image_0.pdf}}
   \hspace{5pt}
   \subcaptionbox{Die Verteilung der Mittelwerte aus dem \textit{Pooling} dieses Bildes.}{\centering\includegraphics[width=0.5\linewidth]{Plots/distr.pdf}}
   \caption{Veranschaulichung der Datenskalierung für die Alternativmethode. Die Bilder werden zugeschnitten, skaliert und einem \textit{AveragePooling} unterzogen.}
-  \renewcommand{\baselinestretch}{1.5}
   \label{fig:alter}
 \end{figure}
 %
 Für diese Methode haben wir es uns zu Nutze gemacht, dass das Erkennen der
 Krankheiten hauptsächlich im Bildmittelpunkt stattfindet. Die OCT Aufnahmen
-sind verständlicherweise auf die Iris zentriert aufgenommen.
+sind allesamt auf die Iris zentriert aufgenommen.
 Daher wird das Bild zunächst zugeschnitten. Dazu werden die Pixelwerte auf eine
 Achse projiziert, indem zeilenweise aufsummiert wird. In dieser Verteilung
 lässt sich ein Maximum finden, welches als Mittelpunkt des Bildes dient.
@@ -44,15 +42,17 @@ Die hierzu verwendete Architektur ist das Ergebnis einer intensiven
 Optimierungsstudie. Durch die Skalierung des Datensatzes und die Verwendung
 eines deutlich kleineren Netzes kann die Rechenzeit für das Training eines
 Netzes stark reduziert werden. Dies ermöglicht auch eine intensive Suche nach
-der besten Hyperparameterkonfiguration. Dazu wurden die Anzahl der Dichtelagen
-in Kombination mit der Anzahl der Filter der einzelnen Dichtelagen, die
-Aktivierungsfunktion in den Dichtelagen, die Aktivierungsfunktion der
+der besten Hyperparameterkonfiguration. Die allgemeine Struktur des Netzes
+zeichnet sich hierbei durch eine Abfolge von Dichtelagen und \texttt{Dropout}
+Lagen aus. Um die beste Konfiguration zu finden wurden die Anzahl der
+Dichtelagen in Kombination mit der Anzahl der Filter der einzelnen Dichtelagen,
+die Aktivierungsfunktion in den Dichtelagen, die Aktivierungsfunktion der
 letzten Lage, sowie die Raten für die \textit{Dropout} Lagen variiert. So
 konnten insgesamt mehr als $120$ Modellarchitekturen getestet werden. Die
 Genauigkeiten für einige Konfigurationen sind in Abbildung~\ref{fig:accs} in
 Abhängigkeit der batch size dargestellt.
 Dabei wurden alle Kombinationen der in Tabelle~\ref{tab:grid} aufgeführten
-Parameterbereiche getestet. Es handelt sich hierbei um fünf Grundsrukturen.
+Grundmodelle getestet. Es handelt sich hierbei um fünf Grundstrukturen.
 Das Training wird grundsätzlich 150 Epochen auf $\SI{67.5}{\percent}$ des
 Datensatzes vollzogen. $\SI{25}{\percent}$ des Datensatzes bilden den
 Validierungsdatensatz, während die übrigen $\SI{7.5}{\percent}$ als
@@ -66,4 +66,14 @@ aufweisen. Dazu wird gefordert, dass der Wert der Verlustfunktion zwischen der
 ersten und letzten Epoche um mindestens $\SI{5}{\percent}$ abnimmt.\\
 Aus der Optimierungsstudie ergeben sich 12 Modelle nach der Selektion, aus
 denen das beste Modell innerhalb der gewählten Parameterräume als
-Alternativmethode verwendet wird.
+Alternativmethode verwendet wird. Es handelt sich dabei um das Modell 0,
+welches aus fünf Dichtelagen mit den in Tabelle~\ref{tab:grid} aufgeführten
+Filtergrößen und Dropout Raten besteht. Als Aktivierungsfunktion der
+versteckten Lagen zeigte die \texttt{ReLu} Funktion in Kombination mit der
+sigmoid Funktion in der letzten Lage das beste Ergebnis. Die Modelle mit großer
+batch size zeigten allesamt sehr früh Übertraining, sodass hier eine batch size
+von $50$ gewählt wurde. Als Optimierer wird auch hier der Adam Optimierer mit
+einer angepassten Lernrate von $0.0001$ verwendet. Größere Lernraten sorgten
+bei beinahe allen Modellen für sehr frühe und große Divergenzen zwischen
+Trainingsdatensatz und Validierungsdatensatz. Die Gesamtgenauigkeit für dieses
+Netz beträgt $\SI{72}{\percent}$.

@@ -24,7 +24,8 @@
 
 \usepackage{geometry}
 \geometry{a4paper, margin=2.5cm, top=3.5cm}
-\renewcommand{\baselinestretch}{1.5}
+\usepackage[onehalfspacing]{setspace}
+%\renewcommand{\baselinestretch}{1.5}
 
 % Warning, if another latex run is needed
 \usepackage[aux]{rerunfilecheck}
@@ -33,7 +34,7 @@
 \setcounter{tocdepth}{1}
 
 % change spacing before chapters
-\RedeclareSectionCommand[beforeskip=30pt]{chapter}
+\RedeclareSectionCommand[beforeskip=0pt]{chapter}
 
 %------------------------------------------------------------------------------
 %------------------------------ Sprache und Schrift: --------------------------

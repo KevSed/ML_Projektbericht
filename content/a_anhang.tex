@@ -7,9 +7,7 @@
   \subcaptionbox{\label{fig:acc4}}{\includegraphics[width=0.3\linewidth]{Plots/Modelvalacc3.pdf}}
   \hspace{20pt}
   \subcaptionbox{\label{fig:acc5}}{\includegraphics[width=0.3\linewidth]{Plots/Modelvalacc4.pdf}}
-  \renewcommand{\baselinestretch}{1.0}
   \caption{Erreichte Genauigkeiten für die fünf Grundstrukturen der Alternativmethode. Die Genauigkeit ist in Abhängigkeit der \textit{batch size} für verschiedene Aktivierungsfunktionen dargestellt.}
-  \renewcommand{\baselinestretch}{1.5}
   \label{fig:accs}
 \end{figure}
 %
@@ -29,7 +27,7 @@
       Modell 4    & (512, 128, 32)  & (0.5, 0.3, 0.1) \\
       \bottomrule
   \end{tabular}
-  \caption{Getestete Grundstrukturen für die Netzarchitekturen der alternativen Methode.}
+  \caption{Getestete Grundstrukturen für die Netzarchitekturen der alternativen Methode. Das $n$-te Element der Tupel beschreibt jeweils die Filtergröße der $n$-ten Dichtelage. Selbiges gilt für die Dropout Lagen. Es folgt auf jede Dichtelage (abgesehen von der letzten Lage) eine Dropout Lage.}
   \label{tab:grid}
 \end{table}
 %
